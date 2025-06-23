@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editor de Fotos</title>
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Editor de Fotos</title>
+<style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -185,93 +186,116 @@
             transform: translateY(-2px);
         }
     </style>
-</head>
+<style>
+/* Responsive layout for mobile */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .controls, .filters, .tools {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    canvas {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    input[type="range"], button {
+        width: 100%;
+        font-size: 1.1em;
+        padding: 10px;
+    }
+
+    .container, .editor {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+</style></head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🎨 Editor de Fotos Profesional</h1>
-            <p>Mejora tu imagen con herramientas avanzadas de edición</p>
-        </div>
-        
-        <div class="editor-container">
-            <div class="controls">
-                <div class="file-input-container">
-                    <label for="fileInput" class="file-input-label">
+<div class="container">
+<div class="header">
+<h1>🎨 Editor de Fotos Profesional</h1>
+<p>Mejora tu imagen con herramientas avanzadas de edición</p>
+</div>
+<div class="editor-container">
+<div class="controls">
+<div class="file-input-container">
+<label class="file-input-label" for="fileInput">
                         📁 Cargar Nueva Imagen
                     </label>
-                    <input type="file" id="fileInput" accept="image/*">
-                </div>
-                
-                <div class="control-group">
-                    <h3>🌟 Ajustes Básicos</h3>
-                    <div class="control-item">
-                        <label for="brightness">Brillo</label>
-                        <input type="range" id="brightness" min="0" max="200" value="100">
-                        <span class="value-display" id="brightnessValue">100%</span>
-                    </div>
-                    <div class="control-item">
-                        <label for="contrast">Contraste</label>
-                        <input type="range" id="contrast" min="0" max="200" value="100">
-                        <span class="value-display" id="contrastValue">100%</span>
-                    </div>
-                    <div class="control-item">
-                        <label for="saturation">Saturación</label>
-                        <input type="range" id="saturation" min="0" max="200" value="100">
-                        <span class="value-display" id="saturationValue">100%</span>
-                    </div>
-                </div>
-                
-                <div class="control-group">
-                    <h3>🎭 Efectos de Color</h3>
-                    <div class="control-item">
-                        <label for="hue">Matiz</label>
-                        <input type="range" id="hue" min="0" max="360" value="0">
-                        <span class="value-display" id="hueValue">0°</span>
-                    </div>
-                    <div class="control-item">
-                        <label for="sepia">Sepia</label>
-                        <input type="range" id="sepia" min="0" max="100" value="0">
-                        <span class="value-display" id="sepiaValue">0%</span>
-                    </div>
-                    <div class="control-item">
-                        <label for="grayscale">Escala de Grises</label>
-                        <input type="range" id="grayscale" min="0" max="100" value="0">
-                        <span class="value-display" id="grayscaleValue">0%</span>
-                    </div>
-                </div>
-                
-                <div class="control-group">
-                    <h3>✨ Efectos Especiales</h3>
-                    <div class="control-item">
-                        <label for="blur">Desenfoque</label>
-                        <input type="range" id="blur" min="0" max="10" value="0" step="0.1">
-                        <span class="value-display" id="blurValue">0px</span>
-                    </div>
-                    <div class="control-item">
-                        <label for="sharpen">Nitidez</label>
-                        <input type="range" id="sharpen" min="0" max="100" value="0">
-                        <span class="value-display" id="sharpenValue">0%</span>
-                    </div>
-                    <div class="control-item">
-                        <label for="vignette">Viñeta</label>
-                        <input type="range" id="vignette" min="0" max="100" value="0">
-                        <span class="value-display" id="vignetteValue">0%</span>
-                    </div>
-                </div>
-                
-                <div class="button-group">
-                    <button class="btn btn-secondary" onclick="resetFilters()">🔄 Restablecer</button>
-                    <button class="btn btn-primary" onclick="downloadImage()">💾 Descargar</button>
-                </div>
-            </div>
-            
-            <div class="canvas-container">
-                <canvas id="canvas"></canvas>
-            </div>
-        </div>
-    </div>
-
-    <script>
+<input accept="image/*" id="fileInput" type="file"/>
+</div>
+<div class="control-group">
+<h3>🌟 Ajustes Básicos</h3>
+<div class="control-item">
+<label for="brightness">Brillo</label>
+<input id="brightness" max="200" min="0" type="range" value="100"/>
+<span class="value-display" id="brightnessValue">100%</span>
+</div>
+<div class="control-item">
+<label for="contrast">Contraste</label>
+<input id="contrast" max="200" min="0" type="range" value="100"/>
+<span class="value-display" id="contrastValue">100%</span>
+</div>
+<div class="control-item">
+<label for="saturation">Saturación</label>
+<input id="saturation" max="200" min="0" type="range" value="100"/>
+<span class="value-display" id="saturationValue">100%</span>
+</div>
+</div>
+<div class="control-group">
+<h3>🎭 Efectos de Color</h3>
+<div class="control-item">
+<label for="hue">Matiz</label>
+<input id="hue" max="360" min="0" type="range" value="0"/>
+<span class="value-display" id="hueValue">0°</span>
+</div>
+<div class="control-item">
+<label for="sepia">Sepia</label>
+<input id="sepia" max="100" min="0" type="range" value="0"/>
+<span class="value-display" id="sepiaValue">0%</span>
+</div>
+<div class="control-item">
+<label for="grayscale">Escala de Grises</label>
+<input id="grayscale" max="100" min="0" type="range" value="0"/>
+<span class="value-display" id="grayscaleValue">0%</span>
+</div>
+</div>
+<div class="control-group">
+<h3>✨ Efectos Especiales</h3>
+<div class="control-item">
+<label for="blur">Desenfoque</label>
+<input id="blur" max="10" min="0" step="0.1" type="range" value="0"/>
+<span class="value-display" id="blurValue">0px</span>
+</div>
+<div class="control-item">
+<label for="sharpen">Nitidez</label>
+<input id="sharpen" max="100" min="0" type="range" value="0"/>
+<span class="value-display" id="sharpenValue">0%</span>
+</div>
+<div class="control-item">
+<label for="vignette">Viñeta</label>
+<input id="vignette" max="100" min="0" type="range" value="0"/>
+<span class="value-display" id="vignetteValue">0%</span>
+</div>
+</div>
+<div class="button-group">
+<button class="btn btn-secondary" onclick="resetFilters()">🔄 Restablecer</button>
+<button class="btn btn-primary" onclick="downloadImage()">💾 Descargar</button>
+</div>
+</div>
+<div class="canvas-container">
+<canvas id="canvas"></canvas>
+</div>
+</div>
+</div>
+<script>
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
         let originalImageData = null;
